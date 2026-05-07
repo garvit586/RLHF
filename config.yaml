@@ -1,0 +1,32 @@
+# RLHF Pipeline Configuration
+
+# Data paths
+data:
+  preference_data: "dataset/sample_preference.json"
+  prompt_data: "dataset/sample_prompt.json"
+
+# Model configuration
+models:
+  base_model: "distilgpt2"  # Options: distilgpt2, gpt2, EleutherAI/pythia-70m, etc.
+  reward_model: "distilbert-base-uncased"  # Options: distilbert-base-uncased, bert-base-uncased, etc.
+
+# Output directories
+outputs:
+  reward_model_dir: "models/reward_model"
+  rlhf_model_dir: "models/rlhf_model"
+  inference_output: "outputs/inference_results.json"
+
+# Training parameters
+training:
+  reward_epochs: 3
+  rlhf_epochs: 3
+  batch_size: 4
+  learning_rate_reward: 1e-5
+  learning_rate_rlhf: 1.41e-5
+  max_length: 512
+
+# Hardware
+hardware:
+  device: "cuda"  # Options: cuda, cpu
+  mixed_precision: false
+
